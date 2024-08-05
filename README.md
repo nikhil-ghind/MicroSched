@@ -6,26 +6,67 @@ A preemptive, priority-driven task scheduler written in C that simulates the cor
 
 ## Architecture
 
+```mermaid
+flowchart TB
+    subgraph tasks["User tasks, own ucontext stack each"]
+        t1["producer (pri 1)"]
+        t2["consumer (pri 2)"]
+        t3["workerA (pri 3)"]
+        t4["io_task (pri 2)"]
+        t5["idle (pri 255)"]
+    end
+
+    subgraph disp["Dispatcher, runs on g_sched_ctx"]
+        pick["pick_next()<br/>wake_sleeping_tasks then pq_pop"]
+        sw["swapcontext(g_sched_ctx, task.ctx)<br/>bumps switch_count and wait stats"]
+    end
+
+    rq["Ready queue g_ready_head<br/>singly-linked list sorted by priority<br/>FIFO within a level"]
+
+    subgraph sync["Synchronisation"]
+        mtx["Mutex<br/>priority-ordered wait queue<br/>priority inheritance on lock"]
+        sem["Semaphore<br/>count plus wait queue"]
+    end
+
+    timer["setitimer ITIMER_REAL, 10 ms<br/>SIGALRM sets g_preempt_flag"]
+    io["io_sim worker pthread<br/>polls every 10 ms, fires callback"]
+    pool["MemPool<br/>intrusive free list, O(1) alloc/free"]
+    stacks["Stack pool<br/>bump-allocated in sched_init"]
+
+    pick --> rq
+    rq --> sw
+    sw --> tasks
+    tasks -->|"sched_yield / sched_sleep_ms / sched_exit"| pick
+    tasks -->|"mutex_lock or sem_wait when unavailable"| mtx
+    mtx -->|"_sched_block"| pick
+    sem -->|"_sched_block"| pick
+    mtx -->|"unlock hands off, _sched_unblock_one"| rq
+    sem -->|"post, _sched_unblock_one"| rq
+    timer --> disp
+    io -->|"_sched_unblock_one on the waiting task"| rq
+    tasks -->|"io_request then block"| io
+    stacks -.-> tasks
+    pool -.-> tasks
 ```
-┌─────────────────────────────────────────────────────┐
-│                  User Tasks (N)                      │
-│  producer  consumer  workerA  workerB  io_task ...   │
-└──────────────────┬──────────────────────────────────┘
-                   │  sched_yield / _sched_block
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│              Dispatcher (g_sched_ctx)                │
-│  pick_next → wake_sleeping → priority queue pop     │
-│  swapcontext(sched_ctx, task_ctx)                   │
-└─────┬───────────────────────────────┬───────────────┘
-      │ SIGALRM (10 ms)               │ I/O completions
-      │ setitimer → sigalrm_handler   │ (background thread)
-      ▼                               ▼
-┌──────────────┐             ┌────────────────────────┐
-│  Preemption  │             │   io_sim worker thread  │
-│  (g_preempt) │             │   nanosleep + unblock   │
-└──────────────┘             └────────────────────────┘
+
+Task state transitions:
+
+```mermaid
+stateDiagram-v2
+    [*] --> READY: sched_create, pq_insert
+    READY --> RUNNING: dispatcher swapcontext
+    RUNNING --> READY: sched_yield or preemption
+    RUNNING --> SLEEPING: sched_sleep_ms sets wake_time
+    RUNNING --> BLOCKED: _sched_block on Mutex or Semaphore
+    SLEEPING --> READY: wake_sleeping_tasks, now >= wake_time
+    BLOCKED --> READY: _sched_unblock_one from unlock, post, or I/O completion
+    RUNNING --> TERMINATED: sched_exit
+    TERMINATED --> [*]
 ```
+
+### Dispatch over time
+
+<img src="docs/dispatch-timeline.svg" alt="Timeline of the dispatcher switching between tasks by priority, with sleep, block and wake events" width="880">
 
 ### Scheduler Loop
 

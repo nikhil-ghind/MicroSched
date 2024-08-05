@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="880" height="340" font-family="Helvetica, Arial, sans-serif">
+  <title>MicroSched dispatcher timeline</title>
+  <text x="440" y="26" text-anchor="middle" fill="#8b949e" font-size="16" font-weight="bold">MicroSched: dispatcher always runs the highest-priority READY task</text>
+  <g stroke="#8b949e" stroke-width="1" opacity="0.8">
+    <path d="M120 48 L120 60"/>
+    <path d="M180 48 L180 60"/>
+    <path d="M240 48 L240 60"/>
+    <path d="M300 48 L300 60"/>
+    <path d="M360 48 L360 60"/>
+    <path d="M420 48 L420 60"/>
+    <path d="M480 48 L480 60"/>
+    <path d="M540 48 L540 60"/>
+    <path d="M600 48 L600 60"/>
+    <path d="M660 48 L660 60"/>
+    <path d="M720 48 L720 60"/>
+    <path d="M780 48 L780 60"/>
+    <path d="M840 48 L840 60"/>
+  </g>
+  <text x="112" y="58" text-anchor="end" fill="#8b949e" font-size="12">SIGALRM</text>
+  <text x="850" y="58" text-anchor="start" fill="#8b949e" font-size="11">10 ms</text>
+  <text x="112" y="98" text-anchor="end" fill="#58a6ff" font-size="13" font-weight="bold">producer</text>
+  <text x="112" y="111" text-anchor="end" fill="#8b949e" font-size="10">pri 1</text>
+  <rect x="120" y="80" width="720" height="26" rx="3" fill="#58a6ff" fill-opacity="0.06" stroke="#58a6ff" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="120" y="80" width="120" height="26" rx="3" fill="#58a6ff" fill-opacity="0.55" stroke="#58a6ff" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.0000;0.0040;1"/>
+    </rect>
+    <rect x="480" y="80" width="60" height="26" rx="3" fill="#58a6ff" fill-opacity="0.55" stroke="#58a6ff" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.5000;0.5040;1"/>
+    </rect>
+    <rect x="780" y="80" width="60" height="26" rx="3" fill="#58a6ff" fill-opacity="0.55" stroke="#58a6ff" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.9167;0.9207;1"/>
+    </rect>
+  <text x="112" y="133" text-anchor="end" fill="#3fb950" font-size="13" font-weight="bold">consumer</text>
+  <text x="112" y="146" text-anchor="end" fill="#8b949e" font-size="10">pri 2</text>
+  <rect x="120" y="115" width="720" height="26" rx="3" fill="#3fb950" fill-opacity="0.06" stroke="#3fb950" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="240" y="115" width="120" height="26" rx="3" fill="#3fb950" fill-opacity="0.55" stroke="#3fb950" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.1667;0.1707;1"/>
+    </rect>
+    <rect x="540" y="115" width="120" height="26" rx="3" fill="#3fb950" fill-opacity="0.55" stroke="#3fb950" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.5833;0.5873;1"/>
+    </rect>
+  <text x="112" y="168" text-anchor="end" fill="#d29922" font-size="13" font-weight="bold">workerA</text>
+  <text x="112" y="181" text-anchor="end" fill="#8b949e" font-size="10">pri 3</text>
+  <rect x="120" y="150" width="720" height="26" rx="3" fill="#d29922" fill-opacity="0.06" stroke="#d29922" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="360" y="150" width="60" height="26" rx="3" fill="#d29922" fill-opacity="0.55" stroke="#d29922" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.3333;0.3373;1"/>
+    </rect>
+    <rect x="660" y="150" width="60" height="26" rx="3" fill="#d29922" fill-opacity="0.55" stroke="#d29922" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.7500;0.7540;1"/>
+    </rect>
+  <text x="112" y="203" text-anchor="end" fill="#8b949e" font-size="13" font-weight="bold">idle</text>
+  <text x="112" y="216" text-anchor="end" fill="#8b949e" font-size="10">pri 255</text>
+  <rect x="120" y="185" width="720" height="26" rx="3" fill="#8b949e" fill-opacity="0.06" stroke="#8b949e" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="420" y="185" width="60" height="26" rx="3" fill="#8b949e" fill-opacity="0.55" stroke="#8b949e" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.4167;0.4207;1"/>
+    </rect>
+    <rect x="720" y="185" width="60" height="26" rx="3" fill="#8b949e" fill-opacity="0.55" stroke="#8b949e" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.8333;0.8373;1"/>
+    </rect>
+  <path d="M120 222 L840 222" stroke="#8b949e" stroke-width="1.5" opacity="0.8" fill="none"/>
+  <text x="120" y="238" text-anchor="middle" fill="#8b949e" font-size="11">0</text>
+  <text x="240" y="238" text-anchor="middle" fill="#8b949e" font-size="11">20</text>
+  <text x="360" y="238" text-anchor="middle" fill="#8b949e" font-size="11">40</text>
+  <text x="480" y="238" text-anchor="middle" fill="#8b949e" font-size="11">60</text>
+  <text x="600" y="238" text-anchor="middle" fill="#8b949e" font-size="11">80</text>
+  <text x="720" y="238" text-anchor="middle" fill="#8b949e" font-size="11">100</text>
+  <text x="840" y="238" text-anchor="middle" fill="#8b949e" font-size="11">120</text>
+  <text x="850" y="238" text-anchor="start" fill="#8b949e" font-size="11">ms</text>
+  <g opacity="0"><animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.1667;0.1707;1"/>
+    <path d="M240 74 L240 216" stroke="#f0883e" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+    <text x="244" y="214" fill="#f0883e" font-size="10">sleep_ms</text>
+  </g>
+  <g opacity="0"><animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.3333;0.3373;1"/>
+    <path d="M360 74 L360 216" stroke="#f0883e" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+    <text x="364" y="214" fill="#f0883e" font-size="10">yield</text>
+  </g>
+  <g opacity="0"><animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.4167;0.4207;1"/>
+    <path d="M420 74 L420 216" stroke="#f0883e" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+    <text x="424" y="214" fill="#f0883e" font-size="10">blocks on mutex</text>
+  </g>
+  <g opacity="0"><animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.5000;0.5040;1"/>
+    <path d="M480 74 L480 216" stroke="#f0883e" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+    <text x="484" y="214" fill="#f0883e" font-size="10">wake_sleeping</text>
+  </g>
+  <g opacity="0"><animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.7500;0.7540;1"/>
+    <path d="M660 74 L660 216" stroke="#f0883e" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+    <text x="664" y="214" fill="#f0883e" font-size="10">unblocked</text>
+  </g>
+  <path d="M120 44 L120 222" stroke="#f0883e" stroke-width="3" fill="none">
+    <animateTransform attributeName="transform" type="translate" dur="12.0s" repeatCount="indefinite" values="0 0;720 0" keyTimes="0;1" calcMode="linear"/>
+  </path>
+  <g text-anchor="middle" font-size="13" font-weight="bold">
+    <text x="440" y="272" fill="#f0883e" opacity="1">pick_next: pop head of the priority-sorted ready queue
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.1600;0.1700;1"/>
+    </text>
+    <text x="440" y="272" fill="#f0883e" opacity="0">swapcontext(sched_ctx, task_ctx) enters the task
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1600;0.1700;0.3300;0.3400;1"/>
+    </text>
+    <text x="440" y="272" fill="#f0883e" opacity="0">task blocks: _sched_block swaps back to the dispatcher
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.3300;0.3400;0.4900;0.5000;1"/>
+    </text>
+    <text x="440" y="272" fill="#f0883e" opacity="0">nothing ready but idle, so idle runs at priority 255
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.4900;0.5000;0.7400;0.7500;1"/>
+    </text>
+    <text x="440" y="272" fill="#f0883e" opacity="0">wake_sleeping_tasks re-queues sleepers, higher priority wins
+      <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0;0.7400;0.7500;1"/>
+    </text>
+  </g>
+  <text x="440" y="304" text-anchor="middle" fill="#8b949e" font-size="12">Lower priority number wins. Ready queue is a sorted singly-linked list, FIFO within a level.</text>
+  <text x="440" y="324" text-anchor="middle" fill="#8b949e" font-size="12">Every switch is a ucontext swapcontext through the dedicated dispatcher stack.</text>
+</svg>
